@@ -46,6 +46,7 @@
     "express": "^4.19.2",
     "express-mongo-sanitize": "^2.2.0",
     "express-rate-limit": "^7.5.0",
+    "image-size": "^1.2.0",
     "jsonwebtoken": "^9.0.2",
     "md5": "^2.3.0",
     "mime-types": "^2.1.35",
