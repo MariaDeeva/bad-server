@@ -1,8 +1,8 @@
-import { Joi, celebrate } from 'celebrate'
+import { Joi, celebrate,Segments  } from 'celebrate'
 import { Types } from 'mongoose'
 
 // eslint-disable-next-line no-useless-escape
-export const phoneRegExp = /^(\+\d+)?(?:\s|-?|\(?\d+\)?)+$/
+export const phoneRegExp = /^(\+\d{1,4})?([\d\s()-]+)$/
 
 export enum PaymentType {
     Card = 'card',
@@ -133,3 +133,10 @@ export const validateAuthentication = celebrate({
         }),
     }),
 })
+export const validateQuery = celebrate({
+    [Segments.QUERY]: Joi.object()
+        .pattern(Joi.string(), Joi.alternatives().try(Joi.string(), Joi.number()))
+        .messages({
+            'object.base': 'Входной параметр не может быть объектом!',
+        }),
+});
